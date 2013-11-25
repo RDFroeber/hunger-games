@@ -34,7 +34,8 @@ The Hunger Games
   * *belongs to Citizen*
   * has many Tributes (Tributes_Sponsors join table)
 
----
+
+
 ## User Stories:
 **Gamemaker**
 
@@ -102,5 +103,3 @@ The Hunger Games
 
 3. As a Escort, I give advice/assign skills so that my Tributes can get a better rating.
 
-
----
