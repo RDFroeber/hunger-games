@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125211113) do
+ActiveRecord::Schema.define(version: 20131125211537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "citizens", force: true do |t|
+    t.integer "district_id",                null: false
+    t.string  "name",                       null: false
+    t.string  "gender",                     null: false
+    t.integer "age",                        null: false
+    t.integer "tesserae"
+    t.boolean "alive",       default: true
+  end
+
+  add_index "citizens", ["district_id"], name: "index_citizens_on_district_id", using: :btree
 
   create_table "districts", force: true do |t|
     t.string "name",     null: false
