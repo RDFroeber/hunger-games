@@ -35,6 +35,7 @@ The Hunger Games
 + Sponsors
   * has a citizen_id reference
   * *belongs to Citizen*
+  * has a signature style
   * has many Tributes (Tributes_Sponsors join table)
 
 
