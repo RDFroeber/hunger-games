@@ -1,5 +1,7 @@
 The Hunger Games
 ================
+[The Rules](girl_on_fire)
+
 
 ## ERD:
 + Game
@@ -89,6 +91,7 @@ The Hunger Games
 
 ---
 **Escort**
+
 1. As a Escort, I want to know which Tributes I am assigned to so that I can impart my wisdom upon them.
 
 2. As a Escort, I want to get sponsors for Tributes so that they have a better chance of survival.
