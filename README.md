@@ -23,6 +23,8 @@ The Hunger Games
   * has tesserae
   * is alive?
 + Tributes
+  * has a game_id reference (added relationship for ease of reference)
+  * *belongs to Game*
   * has a citizen_id reference
   * *belongs to Citizen*
   * has a skill
