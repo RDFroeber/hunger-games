@@ -1,6 +1,6 @@
 The Hunger Games
 ================
-[The Rules](girl_on_fire)
+[The Rules](girl_on_fire.md)
 
 
 ## ERD:
@@ -10,11 +10,13 @@ The Hunger Games
   * has 6 zones (in the arena)
 + Rounds
   * has a game_id reference
-  * has many Tributes (join table)
+  * *belongs to Game*
+  * has many Tributes (Rounds_Tributes join table)
 + Districts
   * has a name (i.e. The Capitol or District 12)
 + Citizens
   * has a district_id reference
+  * *belongs to District*
   * has a name
   * has a gender
   * has an age
@@ -22,13 +24,15 @@ The Hunger Games
   * is alive?
 + Tributes
   * has a citizen_id reference
+  * *belongs to Citizen*
   * has a skill
   * has a skill rating
-  * has many Rounds (join table)
-  * has many Sponsors (join table)
+  * has many Rounds (Rounds_Tributes join table)
+  * has many Sponsors (Tributes_Sponsors join table)
 + Sponsors
   * has a citizen_id reference
-  * has many Tributes (join table)
+  * *belongs to Citizen*
+  * has many Tributes (Tributes_Sponsors join table)
 
 ---
 ## User Stories:
