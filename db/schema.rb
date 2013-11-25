@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125204007) do
+ActiveRecord::Schema.define(version: 20131125210402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,5 +20,17 @@ ActiveRecord::Schema.define(version: 20131125204007) do
     t.string "president", null: false
     t.string "name",      null: false
   end
+
+  create_table "rounds", force: true do |t|
+    t.integer "game_id", null: false
+    t.text    "zone1"
+    t.text    "zone2"
+    t.text    "zone3"
+    t.text    "zone4"
+    t.text    "zone5"
+    t.text    "zone6"
+  end
+
+  add_index "rounds", ["game_id"], name: "index_rounds_on_game_id", using: :btree
 
 end
