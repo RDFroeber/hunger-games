@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125214148) do
+ActiveRecord::Schema.define(version: 20131125214328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20131125214148) do
   end
 
   add_index "sponsors", ["citizen_id"], name: "index_sponsors_on_citizen_id", using: :btree
+
+  create_table "sponsors_tributes", id: false, force: true do |t|
+    t.integer "tribute_id", null: false
+    t.integer "sponsor_id", null: false
+  end
+
+  add_index "sponsors_tributes", ["sponsor_id", "tribute_id"], name: "index_sponsors_tributes_on_sponsor_id_and_tribute_id", using: :btree
+  add_index "sponsors_tributes", ["tribute_id", "sponsor_id"], name: "index_sponsors_tributes_on_tribute_id_and_sponsor_id", using: :btree
 
   create_table "tributes", force: true do |t|
     t.integer "game_id",    null: false
