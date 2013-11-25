@@ -14,6 +14,7 @@ The Hunger Games
   * has many Tributes (Rounds_Tributes join table)
 + Districts
   * has a name (i.e. The Capitol or District 12)
+  * has an industry
 + Citizens
   * has a district_id reference
   * *belongs to District*
