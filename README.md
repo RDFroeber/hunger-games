@@ -38,7 +38,7 @@ The Hunger Games
 
 
 ## User Stories:
-**As a Gamemaker**
+**As a Gamemaker (Simple Version)**
 
 *The Reaping*
 
@@ -46,12 +46,9 @@ The Hunger Games
   * Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
   * Calculate each Citizens odds of being selected based on Tesserae
 
-2. I select one male and one female tribute from each district so that the rules of the game are followed. (Simple Version)
+2. I select one male and one female tribute from each district so that the rules of the game are followed.
   * Select 1 Male and 1 Female from each District
   * Selected Citizens become Tributes (24 total)
-
-2. I select one male and one female tribute from each district so that the rules of the game are followed. (Complex Version)
-  * Volunteers are added
 
 3. I assign an escort to the tributes so that they have a better chance of survival.
   * The 2 Tributes from each District share an Ecort (from The Capitol)
@@ -67,7 +64,7 @@ The Hunger Games
   * Each Tribute is assigned a rating from 1-10
   * Tributes from Districts 1, 2, 4 usually recieve higher ratings
 
-6. I start the Hunger Games so that people are entertained, remminded, frightened etc. (Simple Version)
+6. I start the Hunger Games so that people are entertained, remminded, frightened etc.
   * Round 1 or 2: The tributes are paired at random and the tribute with the higher rating survives
   * Round 1 or 2: In the event of a tie, the tribute with more sponsors wins
   * Round 1 or 2: If there is a tie in terms of sponsors, the tribute from the lower-numbered district survives
@@ -75,10 +72,6 @@ The Hunger Games
   * Round 3: There are three tributes remaining. The tribute with the most sponsors survives
   * Round 3: if there is a tie in terms of sponsors, the tribute from the lower-numbered district survives
   * Round 3: if there is a tie in the district number as well, the female wins
-
-6. I start the Hunger Games so that people are entertained, remminded, frightened etc. (Complex Version)
-  * Each Tribute is assigned to a Zone (1-6)
-  * See Rules for continuation
 
 7. I want to know the outcome of each round so that I can announce the dead.
   * If it is not the final round, deaths are announced; otherwise a "victor" is named
@@ -133,3 +126,14 @@ The Hunger Games
 
 3. I give advice/assign skills so that my Tributes can get a better rating.
 
+---
+**As a Gamemaker (Complex Version)**
+
+*The Reaping*
+1. I select one male and one female tribute from each district so that the rules of the game are followed.
+  * Volunteers are added
+
+*The Reaping*
+2. I start the Hunger Games so that people are entertained, remminded, frightened etc.
+  * Each Tribute is assigned to a Zone (1-6)
+  * See Rules for continuation
