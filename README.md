@@ -11,32 +11,29 @@ The Hunger Games
   * has a game_id reference
   * *belongs to Game*
   * has 6 zones (in the arena)
-  * has many Tributes (Rounds_Tributes join table)
+  * has many Tributes (Rounds_Citizens join table)
 + Districts
   * has a name (i.e. The Capitol or District 12)
   * has an industry
 + Citizens
   * has a district_id reference
   * *belongs to District*
+  * has a type (Single Table Inheritance)
   * has a name
   * has a gender
   * has an age
   * has tesserae
   * is alive?
-+ Tributes
++ Citizen Type: Tributes
   * has a game_id reference (added relationship for ease of reference)
   * *belongs to Game*
-  * has a citizen_id reference
-  * *belongs to Citizen*
   * has a skill
   * has a skill rating
-  * has many Rounds (Rounds_Tributes join table)
-  * has many Sponsors (Tributes_Sponsors join table)
-+ Sponsors
-  * has a citizen_id reference
-  * *belongs to Citizen*
+  * has many Rounds (Rounds_Citizens join table)
+  * has many Sponsors (self join table)
++ Citizen Type: Sponsors
   * has a signature style
-  * has many Tributes (Tributes_Sponsors join table)
+  * has many Tributes (self join table)
 
 
 

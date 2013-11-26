@@ -11,21 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125214328) do
+ActiveRecord::Schema.define(version: 20131125211537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "citizens", force: true do |t|
-    t.integer "district_id",                null: false
-    t.string  "name",                       null: false
-    t.string  "gender",                     null: false
-    t.integer "age",                        null: false
-    t.integer "tesserae"
-    t.boolean "alive",       default: true
+    t.integer  "district_id",                null: false
+    t.string   "type"
+    t.string   "name",                       null: false
+    t.string   "gender",                     null: false
+    t.integer  "age",                        null: false
+    t.integer  "tesserae"
+    t.boolean  "alive",       default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "game_id"
+    t.string   "skill"
+    t.integer  "rating"
+    t.string   "style"
   end
 
   add_index "citizens", ["district_id"], name: "index_citizens_on_district_id", using: :btree
+  add_index "citizens", ["game_id"], name: "index_citizens_on_game_id", using: :btree
 
   create_table "districts", force: true do |t|
     t.string "name",     null: false
@@ -48,40 +56,5 @@ ActiveRecord::Schema.define(version: 20131125214328) do
   end
 
   add_index "rounds", ["game_id"], name: "index_rounds_on_game_id", using: :btree
-
-  create_table "rounds_tributes", id: false, force: true do |t|
-    t.integer "round_id",   null: false
-    t.integer "tribute_id", null: false
-  end
-
-  add_index "rounds_tributes", ["round_id", "tribute_id"], name: "index_rounds_tributes_on_round_id_and_tribute_id", using: :btree
-  add_index "rounds_tributes", ["tribute_id", "round_id"], name: "index_rounds_tributes_on_tribute_id_and_round_id", using: :btree
-
-  create_table "sponsors", force: true do |t|
-    t.integer "citizen_id", null: false
-    t.string  "style"
-  end
-
-  add_index "sponsors", ["citizen_id"], name: "index_sponsors_on_citizen_id", using: :btree
-
-  create_table "sponsors_tributes", id: false, force: true do |t|
-    t.integer "tribute_id", null: false
-    t.integer "sponsor_id", null: false
-  end
-
-  add_index "sponsors_tributes", ["sponsor_id", "tribute_id"], name: "index_sponsors_tributes_on_sponsor_id_and_tribute_id", using: :btree
-  add_index "sponsors_tributes", ["tribute_id", "sponsor_id"], name: "index_sponsors_tributes_on_tribute_id_and_sponsor_id", using: :btree
-
-  create_table "tributes", force: true do |t|
-    t.integer "game_id",    null: false
-    t.integer "citizen_id", null: false
-    t.integer "escort_id",  null: false
-    t.string  "skill"
-    t.integer "rating"
-  end
-
-  add_index "tributes", ["citizen_id"], name: "index_tributes_on_citizen_id", using: :btree
-  add_index "tributes", ["escort_id"], name: "index_tributes_on_escort_id", using: :btree
-  add_index "tributes", ["game_id"], name: "index_tributes_on_game_id", using: :btree
 
 end
