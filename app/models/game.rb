@@ -1,8 +1,7 @@
 class Game < ActiveRecord::Base
   has_many :rounds
 
-  validates :president, presence: true
-  validates :name, presence: true
+  validates :president, :name, presence: true
 
   after_save :prepare_for_game
 
@@ -10,6 +9,5 @@ class Game < ActiveRecord::Base
     gamemaker = Gamemaker.new(self)
     # gamemaker.some_method
 
-    gamemaker
   end
 end
