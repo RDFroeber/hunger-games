@@ -5,7 +5,8 @@ class Gamemaker
 
   attr_reader :game
 
-  # def some_method
+  def commence_reaping
+    reapees = Citizen.all.where()
 
-  # end
+  end
 end

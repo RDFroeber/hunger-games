@@ -6,7 +6,7 @@ The Hunger Games
 ## ERD:
 + Game
   * has a President
-  * has a name (i.e. 74th Hunger Games)
+  * has a name (i.e. 74th Annual Hunger Games)
 + Rounds
   * has a game_id reference
   * *belongs to Game*
@@ -43,22 +43,49 @@ The Hunger Games
 *The Reaping*
 
 1. I start the Reaping so that there are tributes for the game.
+  * Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
+  * Calculate each Citizens odds of being selected based on Tesserae
 
 2. I select one male and one female tribute from each district so that the rules of the game are followed.
+(Simple Version)
+  * Select 1 Male and 1 Female from each District
+  * Selected Citizens become Tributes (24 total)
+(Complex Version)
+  * Volunteers are added
 
 3. I assign an escort to the tributes so that they have a better chance of survival.
+  * The 2 Tributes from each District share an Ecort (from The Capitol)
+  * Each Tribute gains a skill
 
 4. I assign tesserae after each Reaping so that the distribution is fair.
+  * Each Tributes Tesserae is reset to null
+  * All other eligible Citizens increment by 1
 
 *The Game*
 
-5. I start the Hunger Games so that people are entertained, remminded, frightened etc.
+5. I rate each Tribute based on their skill so that everyone (fellow Tributes, Sponsors, viewers, etc.) has an idea of their chances.
+  * Each Tribute is assigned a rating from 1-10
+  * Tributes from Districts 1, 2, 4 usually recieve higher ratings
 
-6. I want to know the outcome of each round so that I can announce the dead.
+6. I start the Hunger Games so that people are entertained, remminded, frightened etc.
+(Simple Version)
+  * Round 1 or 2: The tributes are paired at random and the tribute with the higher rating survives
+  * Round 1 or 2: In the event of a tie, the tribute with more sponsors wins
+  * Round 1 or 2: If there is a tie in terms of sponsors, the tribute from the lower-numbered district survives
+  * Round 1 or 2: If there is a tie in the district number as well, the female wins
+  * Round 3: There are three tributes remaining. The tribute with the most sponsors survives
+  * Round 3: if there is a tie in terms of sponsors, the tribute from the lower-numbered district survives
+  * Round 3: if there is a tie in the district number as well, the female wins
+(Complex Version)
+  * Each Tribute is assigned to a Zone (1-6)
+  * See Rules for continuation
 
-7. I annouce the dead after each round so that the survivors are known.
+7. I want to know the outcome of each round so that I can announce the dead.
+  * If it is not the final round, deaths are announced; otherwise a "victor" is named
 
-8. I end the game and announce a victor (when only one is left) so that hope survives.
+8. I annouce the dead after each round so that the survivors are known.
+
+9. I end the game and announce a victor (when only one is left) so that hope survives.
 
 
 ---
