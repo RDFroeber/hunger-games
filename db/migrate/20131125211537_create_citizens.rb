@@ -12,12 +12,12 @@ class CreateCitizens < ActiveRecord::Migration
       t.boolean :alive, default: true
       t.timestamps
 
-      # tribute
+      # Tribute
       t.references :game, index: true
       t.string :skill
       t.integer :rating
 
-      # sponsor
+      # Sponsor
       t.string :style
 
     end
