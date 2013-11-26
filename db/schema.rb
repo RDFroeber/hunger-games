@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125211537) do
+ActiveRecord::Schema.define(version: 20131126192415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20131125211537) do
 
   add_index "citizens", ["district_id"], name: "index_citizens_on_district_id", using: :btree
   add_index "citizens", ["game_id"], name: "index_citizens_on_game_id", using: :btree
+
+  create_table "citizens_rounds", id: false, force: true do |t|
+    t.integer "round_id",   null: false
+    t.integer "citizen_id", null: false
+  end
+
+  add_index "citizens_rounds", ["citizen_id", "round_id"], name: "index_citizens_rounds_on_citizen_id_and_round_id", using: :btree
+  add_index "citizens_rounds", ["round_id", "citizen_id"], name: "index_citizens_rounds_on_round_id_and_citizen_id", using: :btree
 
   create_table "districts", force: true do |t|
     t.string "name",     null: false
