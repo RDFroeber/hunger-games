@@ -5,8 +5,8 @@ class Gamemaker
 
   attr_reader :game
 
-  def commence_reaping
-    reapees = Citizen.all.where()
-
+  def reap_citizens
+    reapees = Citizen.all.where(age: 12..18)
+    
   end
 end

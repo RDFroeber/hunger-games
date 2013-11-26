@@ -130,10 +130,12 @@ The Hunger Games
 **As a Gamemaker (Complex Version)**
 
 *The Reaping*
+
 1. I select one male and one female tribute from each district so that the rules of the game are followed.
   * Volunteers are added
 
-*The Reaping*
+*The Game*
+
 2. I start the Hunger Games so that people are entertained, remminded, frightened etc.
   * Each Tribute is assigned to a Zone (1-6)
   * See Rules for continuation
