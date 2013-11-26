@@ -50,6 +50,7 @@ The Hunger Games
 (Simple Version)
   * Select 1 Male and 1 Female from each District
   * Selected Citizens become Tributes (24 total)
+
 (Complex Version)
   * Volunteers are added
 
@@ -68,6 +69,7 @@ The Hunger Games
   * Tributes from Districts 1, 2, 4 usually recieve higher ratings
 
 6. I start the Hunger Games so that people are entertained, remminded, frightened etc.
+
 (Simple Version)
   * Round 1 or 2: The tributes are paired at random and the tribute with the higher rating survives
   * Round 1 or 2: In the event of a tie, the tribute with more sponsors wins
@@ -76,6 +78,7 @@ The Hunger Games
   * Round 3: There are three tributes remaining. The tribute with the most sponsors survives
   * Round 3: if there is a tie in terms of sponsors, the tribute from the lower-numbered district survives
   * Round 3: if there is a tie in the district number as well, the female wins
+  
 (Complex Version)
   * Each Tribute is assigned to a Zone (1-6)
   * See Rules for continuation
