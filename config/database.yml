@@ -8,7 +8,7 @@ development:
   encoding: unicode
   database: hungergames_development
   pool: 5
-  username: RaleighD
+  username: brittlewis
   password:
 
 # Warning: The database defined as "test" will be erased and
@@ -19,7 +19,7 @@ test:
   encoding: unicode
   database: hungergames_test
   pool: 5
-  username: RaleighD
+  username: brittlewis
   password:
 
 production:
@@ -27,5 +27,5 @@ production:
   encoding: unicode
   database: hungergames_production
   pool: 5
-  username: RaleighD
+  username: brittlewis
   password:
