@@ -1,2 +1,2 @@
-class Tribute < ActiveRecord::Base
+class Tribute < Citizen
 end

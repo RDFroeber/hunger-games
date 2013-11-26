@@ -1,2 +1,2 @@
-class Sponsor < ActiveRecord::Base
+class Sponsor < Citizen
 end
