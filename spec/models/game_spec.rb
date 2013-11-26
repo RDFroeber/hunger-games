@@ -3,18 +3,9 @@ require 'spec_helper'
 describe Game do
   let(:game) {Game.new(president: "Coriolanus Snow", name: "The 73rd Annual Hunger Games")}
 
-  it "is valid with a president and a name" do
-    expect(game).to be_valid
-  end
-
-  it "is invalid without a president" do
-    game.president = nil
-    expect(game).to have(1).errors_on(:president)
-  end
-
-  it "is invalid without a name" do
-    game.name = nil
-    expect(game).to have(1).errors_on(:name)
+  describe "validations" do
+    it { should validate_presence_of(:president) }
+    it { should validate_presence_of(:name) }
   end
 
   describe "it has many relationships" do
