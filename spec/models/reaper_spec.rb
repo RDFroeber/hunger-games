@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Reaper do
-  let!(:reap) {Reaper.new}
+  let(:reap) {Reaper.new}
   describe "#eligible_citizens" do
     it "finds all eligible citizens to be reaped" do
       expect(reap.eligible_citizens.sample).to be_an_instance_of(Citizen)

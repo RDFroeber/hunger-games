@@ -51,7 +51,7 @@ The Hunger Games
   * Selected Citizens become Tributes (24 total)
 
 3. I assign an escort to the tributes so that they have a better chance of survival.
-  * The 2 Tributes from each District share an Ecort (from The Capitol)
+  * The 2 Tributes from each District share an Escort (from The Capitol)
   * Each Tribute gains a skill
 
 4. I assign tesserae after each Reaping so that the distribution is fair.
@@ -62,9 +62,9 @@ The Hunger Games
 
 5. I rate each Tribute based on their skill so that everyone (fellow Tributes, Sponsors, viewers, etc.) has an idea of their chances.
   * Each Tribute is assigned a rating from 1-10
-  * Tributes from Districts 1, 2, 4 usually recieve higher ratings
+  * Tributes from Districts 1, 2, 4 usually receive higher ratings
 
-6. I start the Hunger Games so that people are entertained, remminded, frightened etc.
+6. I start the Hunger Games so that people are entertained, reminded, frightened etc.
   * Round 1 or 2: The tributes are paired at random and the tribute with the higher rating survives
   * Round 1 or 2: In the event of a tie, the tribute with more sponsors wins
   * Round 1 or 2: If there is a tie in terms of sponsors, the tribute from the lower-numbered district survives
@@ -76,7 +76,7 @@ The Hunger Games
 7. I want to know the outcome of each round so that I can announce the dead.
   * If it is not the final round, deaths are announced; otherwise a "victor" is named
 
-8. I annouce the dead after each round so that the survivors are known.
+8. I announce the dead after each round so that the survivors are known.
 
 9. I end the game and announce a victor (when only one is left) so that hope survives.
 
@@ -136,6 +136,6 @@ The Hunger Games
 
 *The Game*
 
-2. I start the Hunger Games so that people are entertained, remminded, frightened etc.
+2. I start the Hunger Games so that people are entertained, reminded, frightened etc.
   * Each Tribute is assigned to a Zone (1-6)
   * See Rules for continuation
