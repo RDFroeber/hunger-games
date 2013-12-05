@@ -81,13 +81,14 @@ class Reaper
     end
 
     designate_tributes
-    
+
     @tributes
   end
 
   def designate_tributes
     @tributes.each do |tribute|
       tribute.type = "Tribute"
+      tribute.save
     end
   end
 

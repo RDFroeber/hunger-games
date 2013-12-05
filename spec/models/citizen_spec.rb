@@ -10,4 +10,8 @@ describe Citizen do
     it { should validate_presence_of(:gender) }
     it { should validate_presence_of(:age) }
   end
+
+  describe "associations" do
+    it { should belong_to(:district) }
+  end
 end
