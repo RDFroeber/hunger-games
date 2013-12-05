@@ -21,6 +21,12 @@ describe Reaper do
 
     describe "#select_tributes" do
 
+      it "chooses tributes" do
+        tribs.each do |trib|
+          expect(trib.type).to eq("Tribute")
+        end
+      end
+
       it "chooses 24 tributes" do
         expect(tribs.count).to eq(24)
       end

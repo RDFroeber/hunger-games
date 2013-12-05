@@ -1,4 +1,6 @@
 class District < ActiveRecord::Base
-  validates :name, :industry, presence: true
+  has_many :citizens
+  has_many :tributes
 
+  validates :name, :industry, presence: true
 end

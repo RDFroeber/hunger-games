@@ -80,7 +80,15 @@ class Reaper
       end
     end
 
+    designate_tributes
+    
     @tributes
+  end
+
+  def designate_tributes
+    @tributes.each do |tribute|
+      tribute.type = "Tribute"
+    end
   end
 
 end
