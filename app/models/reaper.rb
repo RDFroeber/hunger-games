@@ -109,8 +109,8 @@ class Reaper
     end
   end
 
-  def assign_escorts
-
+  def assign_escorts # TODO assign escorts to tributes
+    # FIXME tribute.escort returns undefined method; activerecord currently makes a SQL query for escord_id 
   end
 
 end
