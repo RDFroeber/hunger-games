@@ -1,9 +1,11 @@
 class Reaper
   def initialize
-    cap_id = District.find_by(name: 'The Capitol')
+    cap_id = District.find_by(name: "The Capitol")
+    @capitolites = Citizen.where(district_id: cap_id)
     # Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
-    @reapees = Citizen.where.not(district_id: cap_id).where(age: 12..18)
+    @reapees = Citizen.where.not(district_id: cap_id, type: "Tribute").where(age: 12..18, alive: true)
     @tributes = []
+    @escorts = []
   end
 
   def eligible_citizens
@@ -12,6 +14,10 @@ class Reaper
 
   def tributes
     @tributes
+  end
+
+  def escorts
+    @escorts
   end
 
   def multiply_tesserae
@@ -81,8 +87,8 @@ class Reaper
     end
 
     designate_tributes
-
-    @tributes
+    select_escorts
+    assign_escorts
   end
 
   def designate_tributes
@@ -90,6 +96,21 @@ class Reaper
       tribute.type = "Tribute"
       tribute.save
     end
+  end
+
+  def select_escorts
+    12.times do
+      @escorts << @capitolites.sample
+    end
+
+    @escorts.each do |escort|
+      escort.type = "Escort"
+      escort.save
+    end
+  end
+
+  def assign_escorts
+
   end
 
 end

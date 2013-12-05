@@ -15,7 +15,7 @@ describe Reaper do
     end
   end
 
-  context "tributes have been reaped" do
+  context "tributes are reaped and escorts assigned" do
     before {reap.select_tributes}
     let(:tribs) {reap.tributes}
 
@@ -44,8 +44,29 @@ describe Reaper do
       end
     end
 
+    describe "#select_escorts" do
+    let(:escorts) {reap.escorts}
+
+      it "chooses escorts" do
+        escorts.each do |escort|
+          expect(escort.type).to eq("Escort")
+        end
+      end
+
+      it "chooses 12 escorts" do
+        expect(escorts.count).to eq(12)
+      end
+    end
+
     describe "#assign_escort" do
-      # expect(tribs.first.escort).to be_an_instance_of(Escort)
+
+      it "assigns an escort to each tribute" do
+        tribs.each do |trib|
+          expect(trib.escort).to_not eq nil
+          # expect(trib.escort.typ).to eq("Escort")
+        end
+      end
     end
   end
+
 end
