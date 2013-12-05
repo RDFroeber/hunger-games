@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Reaper do
   let(:reap) {Reaper.new}
+
   describe "#eligible_citizens" do
     it "finds all eligible citizens to be reaped" do
       expect(reap.eligible_citizens.sample).to be_an_instance_of(Citizen)
@@ -14,22 +15,31 @@ describe Reaper do
     end
   end
 
-  describe "#select_tributes" do
+  context "tributes have been reaped" do
+    before {reap.select_tributes}
+    let(:tribs) {reap.tributes}
 
-    it "chooses 24 tributes" do
-      expect(reap.select_tributes.count).to eq(24)
-    end
+    describe "#select_tributes" do
 
-    it "selects 12 of each gender" do
-      expect(reap.select_tributes.select{|trib| trib.gender == "F"}.count).to eq(12)
-      expect(reap.select_tributes.select{|trib| trib.gender == "M"}.count).to eq(12)
-    end
-
-    it "selects 2 from each district" do
-      grouped_tribs = reap.select_tributes.group_by {|trib| trib.district_id}
-      grouped_tribs.each do |district,arr| 
-        expect(arr.count).to eq(2)
+      it "chooses 24 tributes" do
+        expect(tribs.count).to eq(24)
       end
+
+      it "selects 12 of each gender" do
+        expect(tribs.select{|trib| trib.gender == "F"}.count).to eq(12)
+        expect(tribs.select{|trib| trib.gender == "M"}.count).to eq(12)
+      end
+
+      it "selects 2 from each district" do
+        grouped_tribs = tribs.group_by {|trib| trib.district_id}
+        grouped_tribs.each do |district,arr| 
+          expect(arr.count).to eq(2)
+        end
+      end
+    end
+
+    describe "#assign_escort" do
+      # expect(tribs)
     end
   end
 end

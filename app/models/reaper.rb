@@ -3,10 +3,15 @@ class Reaper
     cap_id = District.find_by(name: 'The Capitol')
     # Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
     @reapees = Citizen.where.not(district_id: cap_id).where(age: 12..18)
+    @tributes = []
   end
 
   def eligible_citizens
     @reapees
+  end
+
+  def tributes
+    @tributes
   end
 
   def multiply_tesserae
@@ -54,7 +59,6 @@ class Reaper
     end
 
     # Select 1 Male and 1 Female from each District
-    @tributes = []
 
     reap.each do |d, a|
       chosen1 = a.sample

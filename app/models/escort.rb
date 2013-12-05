@@ -1,0 +1,2 @@
+class Escort < Citizen
+end
