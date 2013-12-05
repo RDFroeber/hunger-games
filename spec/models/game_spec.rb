@@ -11,6 +11,7 @@ describe Game do
   describe "associations" do
     it { should have_many(:rounds) }
     it { should have_many(:tributes) }
+    it { should have_many(:escorts) }
   end
 
   describe "it has many relationships" do
