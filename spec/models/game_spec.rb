@@ -8,6 +8,11 @@ describe Game do
     it { should validate_presence_of(:name) }
   end
 
+  describe "associations" do
+    it { should have_many(:rounds) }
+    it { should have_many(:tributes) }
+  end
+
   describe "it has many relationships" do
     before {game.save}
 

@@ -39,7 +39,7 @@ describe Reaper do
     end
 
     describe "#assign_escort" do
-      # expect(tribs)
+      # expect(tribs.first.escort).to be_an_instance_of(Escort)
     end
   end
 end
