@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Reaper do
-  let(:reap) {Reaper.new}
+  let!(:game) {Game.new(president: "Coriolanus Snow", name: "The 73rd Annual Hunger Games")}
+  let(:reap) {Reaper.new(game.id)}
 
   describe "#eligible_citizens" do
     it "finds all eligible citizens to be reaped" do
@@ -17,8 +18,7 @@ describe Reaper do
 
   context "tributes are reaped and escorts assigned" do
     before {reap.select_tributes}
-    let(:tribs) {reap.tributes}
-
+    let!(:tribs) { reap.tributes }#Citizen.where(type: "Tribute", game_id: game.id)}
     describe "#select_tributes" do
 
       it "chooses tributes" do
@@ -37,7 +37,9 @@ describe Reaper do
       end
 
       it "selects 2 from each district" do
+        # binding.pry
         grouped_tribs = tribs.group_by {|trib| trib.district_id}
+        # binding.pry
         grouped_tribs.each do |district,arr| 
           expect(arr.count).to eq(2)
         end

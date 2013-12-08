@@ -1,34 +1,25 @@
 class Reaper
-  def initialize
+  def initialize(game_id)
+    @game_id = game_id
     cap_id = District.find_by(name: "The Capitol")
     @capitolites = Citizen.where(district_id: cap_id, age: 25..50)
     # Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
-    @reapees = Citizen.where.not(district_id: cap_id).where(age: 12..18, type: nil)
+    @eligible_citizens = Citizen.where.not(district_id: cap_id).where(age: 12..18, type: nil)
     @tributes = []
     @escorts = []
   end
 
-  def eligible_citizens
-    @reapees
-  end
-
-  def tributes
-    @tributes
-  end
-
-  def escorts
-    @escorts
-  end
+  attr_reader :game_id, :tributes, :capitolites, :escorts, :eligible_citizens
 
   def multiply_tesserae
-    @multiplied_reapees = []
+    multiplied_reapees = []
 
     # Multiply each by number of tesserae
     eligible_citizens.each do |r|
-      r.tesserae.times { @multiplied_reapees << r }
+      r.tesserae.times { multiplied_reapees << r }
     end
 
-    @multiplied_reapees
+    multiplied_reapees
   end
 
   def select_tributes
@@ -74,7 +65,7 @@ class Reaper
         until chosen2.gender == "M"
           chosen2 = a.sample
         end
-        @tributes << chosen2 && @tributes << chosen1
+        tributes << chosen2 && tributes << chosen1
 
       else
         # tribute << {d => {m: chosen1}}
@@ -82,7 +73,7 @@ class Reaper
         until chosen2.gender == "F"
           chosen2 = a.sample
         end
-        @tributes << chosen1 && @tributes << chosen2
+        tributes << chosen1 && tributes << chosen2
       end
     end
 
@@ -92,30 +83,35 @@ class Reaper
   end
 
   def designate_tributes
-    @tributes.each do |tribute|
+    tributes.map! do |tribute|
       tribute.type = "Tribute"
+      tribute.game_id = game_id
       tribute.save
+      Citizen.find(tribute.id)
     end
-
-    # @tributes.map! do |tribute|
-    #   Tribute.new(tribute)
-    # end
   end
 
   def select_escorts
     12.times do
-      @escorts << @capitolites.sample
+      escorts << capitolites.sample
     end
 
-    @escorts.each do |escort|
+    escorts.map! do |escort|
       escort.type = "Escort"
+      escort.game_id = game_id
       escort.save
+      Citizen.find(escort.id)
     end
   end
 
   def assign_escorts # TODO assign escorts to tributes
-    @tributes.each do |tribute|
-      tribute.escort = @escorts[tribute.district.name[-1].to_i - 1]
+    tributes.each do |tribute|
+
+      escorts.each do |escort|
+        d = tribute.district.name[-1]
+        tribute.escort = escorts[d.to_i - 1]
+        # binding.pry
+      end
     end    
   end
 
