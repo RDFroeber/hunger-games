@@ -63,7 +63,7 @@ describe Reaper do
       it "assigns an escort to each tribute" do
         tribs.each do |trib|
           expect(trib.escort).to_not eq nil
-          # expect(trib.escort.typ).to eq("Escort")
+          # expect(trib.escort.type).to eq("Escort")
         end
       end
     end

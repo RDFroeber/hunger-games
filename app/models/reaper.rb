@@ -1,9 +1,9 @@
 class Reaper
   def initialize
     cap_id = District.find_by(name: "The Capitol")
-    @capitolites = Citizen.where(district_id: cap_id)
+    @capitolites = Citizen.where(district_id: cap_id, age: 25..50)
     # Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
-    @reapees = Citizen.where.not(district_id: cap_id, type: "Tribute").where(age: 12..18, alive: true)
+    @reapees = Citizen.where.not(district_id: cap_id).where(age: 12..18, type: nil)
     @tributes = []
     @escorts = []
   end
@@ -36,30 +36,30 @@ class Reaper
 
     # Split eligible citizens by district
     multiply_tesserae.each do |r|
-      case r.district_id 
-      when 2
+      case r.district.name 
+      when "District 1"
         reap[:d1] << r
-      when 3
+      when "District 2"
         reap[:d2] << r
-      when 4
+      when "District 3"
         reap[:d3] << r
-      when 5
+      when "District 4"
         reap[:d4] << r
-      when 6
+      when "District 5"
         reap[:d5] << r
-      when 7
+      when "District 6"
         reap[:d6] << r
-      when 8
+      when "District 7"
         reap[:d7] << r
-      when 9
+      when "District 8"
         reap[:d8] << r
-      when 10
+      when "District 9"
         reap[:d9] << r
-      when 11
+      when "District 10"
         reap[:d10] << r
-      when 12
+      when "District 11"
         reap[:d11] << r
-      when 13
+      when "District 12"
         reap[:d12] << r
       end
     end
@@ -96,6 +96,10 @@ class Reaper
       tribute.type = "Tribute"
       tribute.save
     end
+
+    # @tributes.map! do |tribute|
+    #   Tribute.new(tribute)
+    # end
   end
 
   def select_escorts
@@ -110,7 +114,9 @@ class Reaper
   end
 
   def assign_escorts # TODO assign escorts to tributes
-    # FIXME tribute.escort returns undefined method; activerecord currently makes a SQL query for escord_id 
+    @tributes.each do |tribute|
+      tribute.escort = @escorts[tribute.district.name[-1].to_i - 1]
+    end    
   end
 
 end
