@@ -1,7 +1,7 @@
 class Reaper
   def initialize(game_id)
     @game_id = game_id
-    cap_id = District.find_by(name: "The Capitol")
+    cap_id = District.find_by(name: "The Capitol").id
     @capitolites = Citizen.where(district_id: cap_id, age: 25..50)
     # Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)
     @eligible_citizens = Citizen.where.not(district_id: cap_id).where(age: 12..18, type: nil)
@@ -9,7 +9,7 @@ class Reaper
     @escorts = []
   end
 
-  attr_reader :game_id, :tributes, :capitolites, :escorts, :eligible_citizens
+  attr_accessor :game_id, :tributes, :capitolites, :escorts, :eligible_citizens
 
   def multiply_tesserae
     multiplied_reapees = []
@@ -86,6 +86,7 @@ class Reaper
     tributes.map! do |tribute|
       tribute.type = "Tribute"
       tribute.game_id = game_id
+      tribute.tesserae = nil
       tribute.save
       Citizen.find(tribute.id)
     end
@@ -104,15 +105,19 @@ class Reaper
     end
   end
 
-  def assign_escorts # TODO assign escorts to tributes
+  def assign_escorts
     tributes.each do |tribute|
-
       escorts.each do |escort|
-        d = tribute.district.name[-1]
-        tribute.escort = escorts[d.to_i - 1]
-        # binding.pry
+        d = tribute.district.name.match(/District\s(\d+)/)[1]
+        tribute.escort = escorts[d.to_i - 1] 
       end
-    end    
+    end
+    # binding.pry
   end
 
+  def increase_tesserae
+    eligible_citizens.each do |citizen|
+      citizen.tesserae = (citizen.tesserae.to_i + 1).to_s
+    end
+  end
 end

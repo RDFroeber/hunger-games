@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Reaper do
-  let!(:game) {Game.new(president: "Coriolanus Snow", name: "The 73rd Annual Hunger Games")}
+  let(:game) {Game.new(president: "Coriolanus Snow", name: "The 73rd Annual Hunger Games")}
   let(:reap) {Reaper.new(game.id)}
 
   describe "#eligible_citizens" do
@@ -18,9 +18,9 @@ describe Reaper do
 
   context "tributes are reaped and escorts assigned" do
     before {reap.select_tributes}
-    let!(:tribs) { reap.tributes }#Citizen.where(type: "Tribute", game_id: game.id)}
-    describe "#select_tributes" do
+    let(:tribs) { reap.tributes }
 
+    describe "#select_tributes" do
       it "chooses tributes" do
         tribs.each do |trib|
           expect(trib.type).to eq("Tribute")
@@ -44,6 +44,22 @@ describe Reaper do
           expect(arr.count).to eq(2)
         end
       end
+
+      it "removes each tribute's tesserae" do
+        tribs.each do |trib|
+          expect(trib.tesserae).to eq nil
+        end
+      end
+    end
+
+    describe "#increase_tesserae" do
+      let(:sample_citizen) {reap.eligible_citizens.sample}
+      let!(:tesserae) {sample_citizen.tesserae}
+      before {reap.increase_tesserae}
+
+      it "increases each eligible citizens' tesserae" do
+        expect(sample_citizen.tesserae.to_i).to eq(tesserae.to_i + 1)
+      end
     end
 
     describe "#select_escorts" do
@@ -65,8 +81,18 @@ describe Reaper do
       it "assigns an escort to each tribute" do
         tribs.each do |trib|
           expect(trib.escort).to_not eq nil
-          # expect(trib.escort.type).to eq("Escort")
+          expect(trib.escort.type).to eq("Escort")
         end
+      end
+
+      it "assigns the same escort to tributes from the same district" do
+        expect(tribs[0].escort).to eq(tribs[1].escort)
+        expect(tribs[2].escort).to eq(tribs[3].escort)
+        expect(tribs[4].escort).to eq(tribs[5].escort)
+        expect(tribs[6].escort).to eq(tribs[7].escort)
+        expect(tribs[8].escort).to eq(tribs[9].escort)
+        expect(tribs[10].escort).to eq(tribs[11].escort)
+        expect(tribs[12].escort).to eq(tribs[13].escort)
       end
     end
   end
