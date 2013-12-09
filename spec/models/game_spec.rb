@@ -14,16 +14,16 @@ describe Game do
     it { should have_many(:escorts) }
   end
 
-  describe "it has many relationships" do
-    before {game.save}
+  context "the game has begun" do
+    before {game.start_preliminaries}
 
-    it "it can have many rounds" do
-      game.rounds << Round.new(game: game)
-      expect(game.rounds.first).to be_an_instance_of(Round)
+    describe "#start_preliminaries" do
+      it "each tribute should gain a skill" do
+        game.tributes.each do |trib|
+          expect(trib.skill).to_not eq nil
+        end
+      end
+
     end
-
-    # it "it can have many tributes" do
-    #   expect(game.tributes.first).to be_an_instance_of(Tribute)
-    # end
   end
 end

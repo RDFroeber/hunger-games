@@ -1,16 +1,15 @@
 class Gamemaker
-  def initialize
-    @game = Game.new
+  def initialize(name)
+    @name = name
   end
 
-  attr_reader :game
+  attr_reader :name, :create_game, :start_reaping
 
-  def start_reaping
-     Reaper.new(game.id)
+  def create_game(game_name)
+    Game.new(president: "Coriolanus Snow", name: game_name)
   end
-  # def reap_citizens
-  #   tess_max = Citizen.maximum(:tesserae)
-  #   reapees = Citizen.where(age: 12..18, tesserae: 1..tess_max)
-  #   # 1 F and 1 M from each district
-  # end
+
+  def start_reaping(game)
+    Reaper.new(game)
+  end
 end

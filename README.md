@@ -52,7 +52,6 @@ The Hunger Games
 
 3. I assign an escort to the tributes so that they have a better chance of survival.
   * The 2 Tributes from each District share an Escort (from The Capitol)
-  * Each Tribute gains a skill
 
 4. I assign tesserae after each Reaping so that the distribution is fair.
   * Each Tributes Tesserae is reset to null
@@ -61,6 +60,7 @@ The Hunger Games
 *The Game*
 
 5. I rate each Tribute based on their skill so that everyone (fellow Tributes, Sponsors, viewers, etc.) has an idea of their chances.
+  * Each Tribute gains a skill
   * Each Tribute is assigned a rating from 1-10
   * Tributes from Districts 1, 2, 4 usually receive higher ratings
 

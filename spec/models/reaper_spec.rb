@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Reaper do
   let(:game) {Game.new(president: "Coriolanus Snow", name: "The 73rd Annual Hunger Games")}
-  let(:reap) {Reaper.new(game.id)}
+  let(:reap) {Reaper.new(game)}
 
   describe "#eligible_citizens" do
     it "finds all eligible citizens to be reaped" do

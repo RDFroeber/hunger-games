@@ -1,6 +1,6 @@
 class Reaper
-  def initialize(game_id)
-    @game_id = game_id
+  def initialize(game)
+    @game_id = game.id
     cap_id = District.find_by(name: "The Capitol").id
     @capitolites = Citizen.where(district_id: cap_id, age: 25..50)
     # Find all eligible Citizens for the Reaping (Districts 1-12 & Age 12-18)

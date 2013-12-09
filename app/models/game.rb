@@ -4,4 +4,8 @@ class Game < ActiveRecord::Base
   has_many :escorts
 
   validates :president, :name, presence: true
+
+  def start_preliminaries
+    
+  end
 end
