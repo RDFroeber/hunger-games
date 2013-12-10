@@ -6,6 +6,12 @@ class Game < ActiveRecord::Base
   validates :president, :name, presence: true
 
   def start_preliminaries
-    
+    skills = ["archery", "knife-throwing", "strength", "camouflage", "snares", "speed", "fishing"]
+
+    self.tributes.each do |trib|
+      trib.skill = skill.sample
+    end
+
+    binding.pry
   end
 end
